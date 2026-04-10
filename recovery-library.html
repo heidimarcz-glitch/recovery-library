@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Recovery Library</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .header-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .category {
+            margin-bottom: 40px;
+        }
+
+        .category-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: opacity 0.3s;
+            user-select: none;
+        }
+
+        .category-header:hover {
+            opacity: 0.9;
+        }
+
+        .category-header::after {
+            content: '▼';
+            font-size: 0.8em;
+            transition: transform 0.3s;
+            transform: rotate(-90deg);
+        }
+
+        .category-header.expanded::after {
+            transform: rotate(0deg);
+        }
+
+        .resource-list {
+            display: grid;
+            gap: 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+            margin-bottom: 0;
+        }
+
+        .resource-list.expanded {
+            max-height: 5000px;
+            opacity: 1;
+        }
+
+        .resource-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .resource-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .resource-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .resource-description {
+            color: #666;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+        }
+
+        .resource-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .resource-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+            transition: background 0.3s;
+        }
+
+        .resource-link:hover {
+            background: #764ba2;
+        }
+
+        .resource-link.pdf {
+            background: #e74c3c;
+        }
+
+        .resource-link.pdf:hover {
+            background: #c0392b;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-size: 1.2em;
+        }
+
+        footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            border-top: 2px solid #e9ecef;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .resource-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Comprehensive Recovery Library</h1>
+            <p>Free resources for addiction recovery, mental health, and wellness</p>
+        </header>
+
+        <div class="content">
+            <!-- Addiction Recovery - 12 Step Programs -->
+            <div class="category" data-category="addiction-12step">
+                <div class="category-header">🔄 Addiction Recovery</div>
+                <div class="resource-list">
+                    <div class="resource-item">
+                        <div class="resource-title">Alcoholics Anonymous (Big Book)</div>
+                        <div class="resource-description">The foundational text of Alcoholics Anonymous, first published in 1939. Contains the 12 Steps and personal stories of recovery from alcoholism.</div>
+                        <div class="resource-links">
+                            <a href="https://wagga.aagroup.org.au/wp-content/uploads/2016/02/AA-Big-Book-4th-edition.pdf" class="resource-link pdf" target="_blank">PDF Version</a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <div class="resource-title">Alcoholics Anonymous - Daily Reflections</div>
+                        <div class="resource-description">A book of daily meditations for members of Alcoholics Anonymous, with reflections on the program and recovery.</div>
+                        <div class="resource-links">
+                            <a href="https://step2mensgroup.com/wp-content/uploads/2019/12/AA-Daily-Reflections.pdf" class="resource-link pdf" target="_blank">PDF Version</a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <div class="resource-title">Narcotics Anonymous Basic Text</div>
+                        <div class="resource-description">The comprehensive guide to recovery from drug addiction through the NA program, including the 12 Steps adapted for addiction.</div>
+                        <div class="resource-links">
+                            <a href="https://www.nauca.us/wp-content/uploads/2015/05/1988-5th-Edition-NA-Basic-Text-Book-One.pdf" class="resource-link pdf" target="_blank">PDF Version</a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <div class="resource-title">Narcotics Anonymous - Living Clean: The Journey Continues</div>
+                        <div class="resource-description">A guide for members of Narcotics Anonymous on maintaining long-term recovery and navigating life in sobriety.</div>
+                        <div class="resource-links">
+                            <a href="https://nameetingmakers.com/literature/Living-Clean-The-Journey-Continues.pdf" class="resource-link pdf" target="_blank">PDF Version</a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <div class="resource-title">Narcotics Anonymous - Just For Today</div>
+                        <div class="resource-description">Daily meditations for members of Narcotics Anonymous with inspirational messages and reflections for each day.</div>
+                        <div class="resource-links">
+                            <a href="https://www.nalouisville.net/uploads/4/7/4/3/47431107/justfortoday_med_book.pdf" class="resource-link pdf" target="_blank">PDF Version</a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <div class="resource-title">Narcotics Anonymous - Step Working Guide</div>
+                        <div class="resource-description">A comprehensive workbook for working through the 12 Steps of Narcotics Anonymous with detailed exercises and questions.</div>
+                        <div class="resource-links">
+                            <a href="https://cwpascna.com/wp-content/uploads/2020/08/na_swg_12.pdf" class="resource-link pdf" target="_blank">PDF Version</a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <div class="resource-title">Breaking Free of Addiction Workbook</div>
+                        <div class="resource-description">A practical workbook with exercises and strategies for understanding and overcoming addiction.</div>
+                        <div class="resource-links">
+                            <a href="https://www.adrian.edu/files/assets/breakingfreeofaddiction.pdf" class="resource-link pdf" target="_blank">PDF Version</a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <div class="resource-title">Refuge Recovery Workbook</div>
+                        <div class="resource-description">A Buddhist-inspired approach to addiction recovery with mindfulness practices and exercises for working through the recovery process.</div>
+                        <div class="resource-links">
+                            <a href="https://www.rivenwoodbooks.com/Refuge%20Recovery%20Workbook.pdf" class="resource-link pdf" target="_blank">PDF Version</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Mental Health & Wellness -->
+            <div class="category" data-category="mental-health">
+                <div class="category-header">🧠 Mental Health & Wellness</div>
+                <div class="resource-list">
+                    <div class="resource-item">
+                        <div class="resource-title">Mindfulness-Based Stress Reduction Activities Workbook</div>
+                        <div class="resource-description">Practical workbook with mindfulness exercises and activities for stress reduction and present-moment awareness.</div>
+                        <div class="resource-links">
+                            <a href="https://static1.squarespace.com/static/5602fb8be4b0618e1c65ebc6/t/575ec111044262f4e89532d8/1465827604375/MBSR-Workbook.pdf" class="resource-link pdf" target="_blank">PDF Version</a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <div class="resource-title">The Positive Psychology Workbook for Challenging Times</div>
+                        <div class="resource-description">Evidence-based exercises and strategies to build resilience, manage stress, and cultivate well-being during difficult periods.</div>
+                        <div class="resource-links">
+                            <a href="https://shac.unm.edu/documents/positive-psych-workbook.pdf" class="resource-link pdf" target="_blank">PDF Version</a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <div class="resource-title">The Body Keeps the Score by Bessel van der Kolk</div>
+                        <div class="resource-description">Groundbreaking work on trauma and its effects on the brain and body, with approaches to healing.</div>
+                        <div class="resource-links">
+                            <a href="https://drive.google.com/file/d/1GGA6axs88gCT749IaD1z3Kkgdjgk30YV/view" class="resource-link pdf" target="_blank">PDF Version</a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <div class="resource-title">Workbook for The Body Keeps the Score</div>
+                        <div class="resource-description">Companion workbook with exercises and practical applications for the concepts in The Body Keeps the Score.</div>
+                        <div class="resource-links">
+                            <a href="https://www.scribd.com/document/690627870/Workbook-for-The-Body-Keeps-The-Score" class="resource-link" target="_blank">Read Online</a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <div class="resource-title">Complex PTSD: From Surviving to Thriving by Pete Walker</div>
+                        <div class="resource-description">A guide to understanding and recovering from childhood trauma and complex PTSD.</div>
+                        <div class="resource-links">
+                            <a href="https://drive.google.com/file/d/13kfs9OYKHDNLP-AUYLo6-_KpmkZ7uLiI/view" class="resource-link pdf" target="_blank">PDF Version</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recovery Stories & Memoirs -->
+            <div class="category" data-category="stories">
+                <div class="category-header">📖 Recovery Stories & Memoirs</div>
+                <div class="resource-list">
+                    <div class="resource-item">
+                        <div class="resource-title">Mind, Body, Spirit - An Anthology of Stories about Recovery from Mental Illness & Substance Abuse</div>
+                        <div class="resource-description">A collection of personal recovery stories from individuals who have experienced mental illness and substance abuse, offering hope and inspiration.</div>
+                        <div class="resource-links">
+                            <a href="https://portal.ct.gov/-/media/dmhas/publications/wcmhnrecoverystoriespdf.pdf" class="resource-link pdf" target="_blank">PDF Version</a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <div class="resource-title">Sober Poetry</div>
+                        <div class="resource-description">A collection of poetry about sobriety, recovery, and the journey through addiction, offering emotional connection and artistic expression.</div>
+                        <div class="resource-links">
+                            <a href="https://thesobercurator.com/poetry/" class="resource-link" target="_blank">Read Online</a>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <div class="resource-title">Big Book - Personal Stories (Part III)</div>
+                        <div class="resource-description">Personal stories of recovery from alcoholism shared by members of Alcoholics Anonymous, offering hope and identification.</div>
+                        <div class="resource-links">
+                            <a href="https://www.aa.org/sites/default/files/2021-11/en_bigbook_personalstories_partIII.pdf" class="resource-link pdf" target="_blank">PDF Version</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p><strong>Disclaimer:</strong> This library provides educational resources only. If you're struggling with addiction, mental health issues, or are in crisis, please seek professional help. Call 988 for the Suicide & Crisis Lifeline or 1-800-662-HELP (4357) for SAMHSA's National Helpline.</p>
+            <p style="margin-top: 15px;">All resources listed are freely available online. This is not affiliated with any organization.</p>
+            <p style="margin-top: 10px; color: #999;">Last Updated: January 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Collapsible categories
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryHeaders = document.querySelectorAll('.category-header');
+            
+            categoryHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const resourceList = this.nextElementSibling;
+                    
+                    // Toggle expanded class on both header and resource list
+                    this.classList.toggle('expanded');
+                    resourceList.classList.toggle('expanded');
+                });
+            });
+        });
+
+        // Smooth scroll to top when clicking header
+        document.querySelector('header').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
